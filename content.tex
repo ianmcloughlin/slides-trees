@@ -189,14 +189,14 @@
     That is: $h \geq \log_m l$.
   \end{theorem}
   \begin{proof}
-    Note: $h \geq log_m l \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq m^{log_m l} \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq l$.
-    So we'll just show $l$ is at most $m^h$.
-    For a tree of height 0, $l = 1$ and $m^0 = 1$ so $m^h \geq l$.
-    Now assume the theorem is true for trees of height $i-1$.
-    Consider a tree of height $i$ with $l$ leaves.
-    We can create $m$ trees of height $i-1$ from it by deleting the root.
-    Each of these smaller trees has at most $m^{h-1}$ leaves by assumption.
-    There are $m$ of these, so the big tree has at most $m \times m^{h-1} = m^h$ leaves.
+    Note that $h \geq log_m l \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq m^{log_m l} \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq l$.
+    So, just show that $l$ is at most $m^h$.
+    
+    For a tree of height 0, $m^0 = 1$ and $l=0$ giving $m^h = l$.
+    Next, assume trees of height $i-1$ have at most $m^{i-1}$ leaves.
+    From a tree of height $i$, we can create $m$ trees of height at most $i-1$ by deleting the root.
+    Each of these smaller trees has at most $m^{i-1}$ leaves.
+    So, the big tree has at most $m \times m^{i-1} = m^i$ leaves.
   \end{proof}
 \end{frame}
 

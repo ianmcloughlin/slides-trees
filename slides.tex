@@ -1,6 +1,6 @@
 \documentclass[dvipsnames,hidelinks,t]{beamer}
- 
-  % Enables the use of colour. 
+
+  % Enables the use of colour.
   \usepackage{xcolor}
   % Syntax high-lighting for code. Requires Python's pygments.
   \usepackage{minted}
@@ -20,7 +20,7 @@
   \usepackage{booktabs}
   % More math symbols.
   \usepackage{amssymb}
-  % More math fonts, like \mathbb.
+  % More math fonts, like mathbb.
   \usepackage{amsfonts}
   % More math layouts, equation arrays, etc.
   \usepackage{amsmath}
@@ -75,7 +75,7 @@
   % Tell minted to use the following colour scheme. 
   \usemintedstyle{manni}
   % Remove some of the vertical space after the title.
-  \addtobeamertemplate{frametitle}{}{\vspace{-3mm}}
+  % \addtobeamertemplate{frametitle}{}{\vspace{-3mm}}
   % Change the default theme colours.
   \setbeamercolor{normal text}{fg=darkgray, bg=white}
   \setbeamercolor{alerted text}{fg=gmitred, bg=white}
@@ -93,6 +93,7 @@
 
   % An environment for displaying math in red, without lots of vertical space.
   \newcommand{\redmath}[1]{\vspace{-3mm} {\begin{center} \color{gmitred} \( #1 \) \end{center}} \vspace{-2mm}}
+  \newcommand{\red}[1]{\vspace{-3mm} {\begin{center} \color{gmitred} #1 \end{center}} \vspace{-2mm}}
 
   % For displaying a blank character.
   \newcommand{\bl}{\underline{\hspace{2mm}}}
@@ -103,9 +104,9 @@
   \newcommand{\citeeg}[1]{\let\thefootnote\relax\footnotetext{\tiny \textcolor{gmitgrey}{#1}}}
   
   % Prevent minted from showing errors.
-  %\makeatletter
-  %\expandafter\def\csname PYGdefault@tok@err\endcsname{\def\PYGdefault@bc##1{{\strut ##1}}}
-  %\makeatother
+  \makeatletter
+  \expandafter\def\csname PYGdefault@tok@err\endcsname{\def\PYGdefault@bc##1{{\strut ##1}}}
+  \makeatother
   
   \begin{document}
     \title{Trees}

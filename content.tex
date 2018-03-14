@@ -47,6 +47,7 @@
 \end{frame}
 
 \begin{frame}{Rooted trees}
+  \vspace{-3mm}
   \begin{description}
     \item[Any vertex] of a tree can be called its root.
     \item[Levels] Root is at level 0, neighbours of the root are at level 1, their other neighbours at level 2, and so on.
@@ -72,51 +73,6 @@
             (a) edge (c)
             (c) edge (d)
             (c) edge (e);
-    \end{scope}
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
-
-\begin{frame}{$m$-ary Rooted Tree}
-  \begin{definition}
-    When a vertex at level $i$ is connected to a vertex at level $i+1$ it's common to call the former the \emph{parent} and the latter the \emph{child}.
-    A rooted tree is $m$-ary if every parent has the same number of children.
-    A $2$-ary rooted tree is called a \emph{binary tree}.
-  \end{definition}
-  \begin{center}
-    \begin{tikzpicture}
-    \begin{scope}[every node/.style={circle,draw,fill,scale=0.6}]
-    \node (a) at (3,4) {};
-    \node (b) at (1,3) {};
-    \node (c) at (5,3) {};
-    \node (d) at (0,2) {};
-    \node (e) at (2,2) {};
-    \node (f) at (4,2) {};
-    \node (g) at (6,2) {};
-    \node (h) at (-0.7,1) {};
-    \node (i) at (0.7,1) {};
-    \node (j) at (1.3,1) {};
-    \node (k) at (2.7,1) {};
-    \node (l) at (3.3,1) {};
-    \node (m) at (4.7,1) {};
-    \node (n) at (5.3,1) {};
-    \node (o) at (6.7,1) {};
-    \end{scope}
-    \begin{scope}[every edge/.style={draw=black}]
-    \path (a) edge (b)
-          (a) edge (c)
-          (b) edge (d)
-          (b) edge (e)
-          (c) edge (f)
-          (c) edge (g)
-          (d) edge (h)
-          (d) edge (i)
-          (e) edge (j)
-          (e) edge (k)
-          (f) edge (l)
-          (f) edge (m)
-          (g) edge (n)
-          (g) edge (o);
     \end{scope}
     \end{tikzpicture}
   \end{center}
@@ -167,38 +123,89 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Logarithms}
-  We define $\log$ in the following way:
-  \[ m^h = l \Leftrightarrow \log_m l = h \]
-
-  \begin{alertblock}{What does $log$ mean?}
-    Suppose we have two numbers $m$ and $h$ and we ask the question ``what is $m$ to the power of $h$?''
-    Let's call the answer $l$, so $l = m^h$.
-
-    The $\log$ function asks the inverse question: ``what do we need to raise $m$ to the power of to get $l$?''
-    The answer is $h$.
-
-    For example, $10^2 = 100$ so $\log_{10} 100 = 2$.
-    The subscript $10$ is called the \emph{base}.
+\begin{frame}[fragile]{Example: non-isomorphic rooted trees}
+  \begin{alertblock}{Note}
+    Trees can be isomorphic as graphs and not as rooted trees.
   \end{alertblock}
+  \vspace{5mm}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{center}
+        \begin{forest}
+          [,circle,fill=black
+            [,circle,fill=black
+              [,circle,fill=black]
+              [,circle,fill=black]
+            ]
+          [,circle,fill=black]
+          ]
+        \end{forest}
+      \end{center}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{center}
+        \begin{forest}
+          [,circle,fill=black
+            [,circle,fill=black
+              [,circle,fill=black]
+            ]
+            [,circle,fill=black]
+            [,circle,fill=black]
+          ]
+        \end{forest}
+      \end{center}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\begin{frame}{Heights and leaves of $m$-ary rooted trees}
-  \begin{theorem}
-    The height $h$ of an $m$-ary rooted tree with $l$ leaves is at least $\log_m l$.
-    That is: $h \geq \log_m l$.
-  \end{theorem}
-  \begin{proof}
-    Note that $h \geq log_m l \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq m^{log_m l} \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq l$.
-    So, just show that $l$ is at most $m^h$.
-    
-    For a tree of height 0, $m^0 = 1$ and $l=0$ giving $m^h = l$.
-    Next, assume trees of height $i-1$ have at most $m^{i-1}$ leaves.
-    From a tree of height $i$, we can create $m$ trees of height at most $i-1$ by deleting the root.
-    Each of these smaller trees has at most $m^{i-1}$ leaves.
-    So, the big tree has at most $m \times m^{i-1} = m^i$ leaves.
-  \end{proof}
+
+\begin{frame}{$m$-ary Rooted Tree}
+  \begin{definition}
+    When a vertex at level $i$ is connected to a vertex at level $i+1$ it's common to call the former the \emph{parent} and the latter the \emph{child}.
+    A rooted tree is $m$-ary if every parent has the same number of children.
+    A $2$-ary rooted tree is called a \emph{binary tree}.
+  \end{definition}
+  \begin{center}
+    \begin{tikzpicture}
+    \begin{scope}[every node/.style={circle,draw,fill,scale=0.6}]
+    \node (a) at (3,4) {};
+    \node (b) at (1,3) {};
+    \node (c) at (5,3) {};
+    \node (d) at (0,2) {};
+    \node (e) at (2,2) {};
+    \node (f) at (4,2) {};
+    \node (g) at (6,2) {};
+    \node (h) at (-0.7,1) {};
+    \node (i) at (0.7,1) {};
+    \node (j) at (1.3,1) {};
+    \node (k) at (2.7,1) {};
+    \node (l) at (3.3,1) {};
+    \node (m) at (4.7,1) {};
+    \node (n) at (5.3,1) {};
+    \node (o) at (6.7,1) {};
+    \end{scope}
+    \begin{scope}[every edge/.style={draw=black}]
+    \path (a) edge (b)
+          (a) edge (c)
+          (b) edge (d)
+          (b) edge (e)
+          (c) edge (f)
+          (c) edge (g)
+          (d) edge (h)
+          (d) edge (i)
+          (e) edge (j)
+          (e) edge (k)
+          (f) edge (l)
+          (f) edge (m)
+          (g) edge (n)
+          (g) edge (o);
+    \end{scope}
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
+
+
+
 
 \begin{frame}[fragile]{Examples of heights and leaves of $m$-ary trees}
   \begin{columns}
@@ -248,6 +255,41 @@
     \end{column}
   \end{columns}
 \end{frame}
+
+\begin{frame}{Logarithms}
+  We define $\log$ in the following way:
+  \[ m^h = l \Leftrightarrow \log_m l = h \]
+
+  \begin{alertblock}{What does $log$ mean?}
+    Suppose we have two numbers $m$ and $h$ and we ask the question ``what is $m$ to the power of $h$?''
+    Let's call the answer $l$, so $l = m^h$.
+
+    The $\log$ function asks the inverse question: ``what do we need to raise $m$ to the power of to get $l$?''
+    The answer is $h$.
+
+    For example, $10^2 = 100$ so $\log_{10} 100 = 2$.
+    The subscript $10$ is called the \emph{base}.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Heights and leaves of $m$-ary rooted trees}
+  \begin{theorem}
+    The height $h$ of an $m$-ary rooted tree with $l$ leaves is at least $\log_m l$.
+    That is: $h \geq \log_m l$.
+  \end{theorem}
+  \begin{proof}
+    Note that $h \geq log_m l \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq m^{log_m l} \hspace{0.1cm} \Leftrightarrow \hspace{0.1cm} m^h \geq l$.
+    So, just show that $l$ is at most $m^h$.
+    
+    For a tree of height 0, $m^0 = 1$ and $l=0$ giving $m^h = l$.
+    Next, assume trees of height $i-1$ have at most $m^{i-1}$ leaves.
+    From a tree of height $i$, we can create $m$ trees of height at most $i-1$ by deleting the root.
+    Each of these smaller trees has at most $m^{i-1}$ leaves.
+    So, the big tree has at most $m \times m^{i-1} = m^i$ leaves.
+  \end{proof}
+\end{frame}
+
+
 
 
 \begin{frame}[fragile]{Deleting the root of an $m$-ary tree}
